@@ -40,7 +40,7 @@ const Books = () => {
         <Loader />
       )}
 
-      {errorMsg && <h1>{errorMsg}</h1>}
+      {/* {errorMsg && <h1>{errorMsg}</h1>} */}
     </div>
   );
 };
