@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Book from "../book/Book";
+import Loader from "../loader/Loader";
 
 const Books = () => {
   const [books, setbooks] = useState([]);
@@ -21,16 +22,25 @@ const Books = () => {
   }, []);
   return (
     <div>
-      {books.map((book) => (
-        <Book
-          key={book.id}
-          title={book.title}
-          author={book.author}
-          url={book.img}
-          type={book.types}
-          price={book.price}
-        />
-      ))}
+      {books.length > 0 ? (
+        books.map((book) => (
+          <Book
+            key={book.id}
+            title={book.title}
+            author={book.author}
+            url={book.img}
+            type={
+              types.lenght > 0 &&
+              types.find((type) => type.id === book.type).title
+            }
+            price={book.price}
+          />
+        ))
+      ) : (
+        <Loader />
+      )}
+
+      {errorMsg && <h1>{errorMsg}</h1>}
     </div>
   );
 };
